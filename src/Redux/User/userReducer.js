@@ -1,4 +1,9 @@
-const { FETCH_USER, FETCH_SUCCESS, FETCH_FAIL } = require('./userTypes');
+const {
+  FETCH_USER,
+  FETCH_SUCCESS,
+  FETCH_FAIL,
+  DISPLAY_NAME,
+} = require('./userTypes');
 
 const initialstate = {
   loading: false,
@@ -7,8 +12,10 @@ const initialstate = {
 };
 
 const userReducer = (state = initialstate, action) => {
+  console.log('Fetch_User Reducer : 03');
   switch (action.type) {
     case FETCH_USER:
+      console.log('Fetch_User Reducer : 03');
       return {
         ...state,
         loading: true,
@@ -20,10 +27,18 @@ const userReducer = (state = initialstate, action) => {
         error: '',
       };
     case FETCH_FAIL:
+      debugger;
       return {
-        loading: false,
+        loading: true,
         users: [],
         error: action.payload,
+      };
+    case DISPLAY_NAME:
+      debugger;
+      return {
+        loading: false,
+        users: ['Buuny', 'Kapd', 'Gaja', 'Nakali'],
+        error: '',
       };
     default:
       return state;
